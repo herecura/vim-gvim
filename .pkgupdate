@@ -1,0 +1,9 @@
+nwVersion=$(wget -q -O- https://github.com/vim/vim/releases/ | grep -m1 -ie 'releases\/tag' | sed 's,.*tag\/v\([0-9a-z\.]*\)".*,\1,')
+update__basever=$(echo $nwVersion | sed -e 's/\([0-9]*\.[0-9a-d]*\)\.\([0-9]*\)/\1/')
+update__patchlevel=$(echo $nwVersion | sed -e 's/\([0-9]*\.[0-9a-d]*\)\.\([0-9]*\)/\2/')
+update__gitcommit=$(wget -q -O- https://github.com/vim/vim/releases/tag/v$nwVersion | grep '<a href="/vim/vim/commit' | perl -pe 's/.*commit\/(.*?)".*/\1/' | head -n1)
+if [ "$update__patchlevel" = "0" ]; then
+	update_pkgver="$update__basever"
+else
+	update_pkgver="$update__basever.$update__patchlevel"
+fi
