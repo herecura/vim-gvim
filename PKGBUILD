@@ -15,12 +15,12 @@ else
     pkgver=${_basever}.${_patchlevel}
 fi
 _gitcommit=afe45b68a67769a61b44a96b0ffe3bfce4e9316e
-pkgrel=1
+pkgrel=2
 _versiondir=vim${_basever/./}
 arch=('x86_64')
 license=('custom:vim')
 url="http://www.vim.org"
-makedepends=('gpm' 'perl' 'python2' 'python' 'lua' 'desktop-file-utils' 'gtk2' 'gettext' 'pkgconfig' 'sed' 'git' 'ruby' 'gtk3' 'libxt')
+makedepends=('gpm' 'perl' 'python' 'lua' 'desktop-file-utils' 'gtk2' 'gettext' 'pkgconfig' 'sed' 'git' 'ruby' 'gtk3' 'libxt')
 source=(
     "$pkgbase::git://github.com/vim/vim#commit=$_gitcommit"
     'license.txt'
@@ -61,9 +61,8 @@ build() {
         --with-features=huge --enable-gpm --enable-acl --with-x=yes \
         --enable-gui=gtk2 --enable-multibyte --enable-cscope \
         --disable-netbeans  --enable-perlinterp=dynamic \
-        --enable-pythoninterp=dynamic --enable-python3interp=dynamic \
-        --enable-rubyinterp=dynamic --enable-luainterp=dynamic
-        #--disable-rubyinterp --enable-luainterp=dynamic
+        --enable-python3interp=dynamic --enable-rubyinterp=dynamic \
+        --enable-luainterp=dynamic
     make
 
     msg2 'Building vim-gvim-gtk3'
@@ -73,9 +72,8 @@ build() {
         --with-features=huge --enable-gpm --enable-acl --with-x=yes \
         --enable-gui=gtk3 --enable-multibyte --enable-cscope \
         --disable-netbeans  --enable-perlinterp=dynamic \
-        --enable-pythoninterp=dynamic --enable-python3interp=dynamic \
-        --enable-rubyinterp=dynamic --enable-luainterp=dynamic
-        #--disable-rubyinterp --enable-luainterp=dynamic
+        --enable-python3interp=dynamic --enable-rubyinterp=dynamic \
+        --enable-luainterp=dynamic
     make
 }
 
