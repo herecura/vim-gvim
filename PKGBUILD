@@ -8,13 +8,13 @@
 pkgbase=vim-gvim
 pkgname=('vim-gvim-gtk2' 'vim-gvim-gtk3' 'vim-gvim-common')
 _basever=8.2
-_patchlevel=0330
+_patchlevel=0332
 if [ "$_patchlevel" = "0" ]; then
     pkgver=${_basever}
 else
     pkgver=${_basever}.${_patchlevel}
 fi
-_gitcommit=57c732ed782607ce6a8c4f9eeb65b95a00e37701
+_gitcommit=d30ae2fc4acb3861fc7dc9618c1f90eee997d412
 pkgrel=1
 _versiondir=vim${_basever/./}
 arch=('x86_64')
